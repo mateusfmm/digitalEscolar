@@ -33,12 +33,12 @@ class Notification extends Model
         return $this->phone;
     }
 
-    public function mailer_user_id()
+    public function mailer_user()
     {
         $this->hasOne(User::class);
     }
 
-    public function receiver_user_id()
+    public function receiver_user()
     {
         $this->hasOne(User::class);
     }

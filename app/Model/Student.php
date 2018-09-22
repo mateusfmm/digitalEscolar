@@ -8,6 +8,37 @@ class Student extends Model
 {
     protected $table = 'students';
 
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    public function getName()
+    {
+        return $this->name ;
+    }
+
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+    }
+
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    public function setSchool(School $school)
+    {
+        $this->school = $school;
+    }
+
+    public function setAddress(School $school)
+    {
+        $this->school = $school;
+    }
+
+
     public function school()
     {
         return $this->belongsTo(School::class);
@@ -16,5 +47,12 @@ class Student extends Model
     public function address()
     {
         return $this->belongsTo(Address::class);
+    }
+
+    public function insert($data)
+    {
+        $this->setName( $student['name'] ?? '');
+        $this->setPhone($student['phone'] ?? '');
+        $this->save();
     }
 }

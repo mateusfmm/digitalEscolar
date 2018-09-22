@@ -23,7 +23,22 @@ Route::get('user/{id}', 'UserContrllero@show');
 
 
 Route::get('students', 'StudentController@getAllStudents');
-Route::get('students', 'StudentController@getAllStudents');
 Route::get('students/create', 'StudentController@create');
 Route::post('students/create', 'StudentController@create');
+Route::put('students/{id}', 'StudentController@edit');
+Route::delete('students/{id}', 'StudentController@delete');
 
+Route::get('notifications', 'NotificationController@getAllNotifications');
+
+
+
+
+Route::get('notifications/create', 'NotificationController@create');
+Route::post('notifications/create', 'NotificationController@create');
+Route::put('notifications/{id}', 'NotificationController@edit');
+Route::delete('students/{id}', 'NotificationController@delete');
+
+
+Route::get('schools', 'SchoolController@getAllSchools');
+Route::get('schools/create', 'SchoolController@create');
+Route::post('schools/create', 'SchoolController@create');
