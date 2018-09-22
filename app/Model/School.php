@@ -8,21 +8,14 @@ class School extends Model
 {
     protected $table = 'schools';
 
-    public $name;
-
-    public $phone;
-
-    public $morning_time_in;
-
-    public $morning_time_out;
-
-    public $afternoon_time_in;
-
-    public $afternoon_time_out;
-
     public function address()
     {
         $this->hasOne(Adress::class);
+    }
+
+    public function students()
+    {
+        $this->hasMany(Student::class);
     }
 
 

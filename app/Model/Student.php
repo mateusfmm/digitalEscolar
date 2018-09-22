@@ -8,17 +8,13 @@ class Student extends Model
 {
     protected $table = 'students';
 
-    public $name;
-
-    public $phone;
+    public function school()
+    {
+        return $this->belongsTo(School::class);
+    }
 
     public function address()
     {
-        $this->hasOne(Adress::class);
-    }
-
-    public function school()
-    {
-        $this->hasOne(School::class);
+        return $this->belongsTo(Address::class);
     }
 }
