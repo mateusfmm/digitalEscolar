@@ -49,7 +49,7 @@ class Address extends Model
 
     public function schools()
     {
-        $this->hasMany(School::class);
+        $this->belongsTo(School::class);
     }
 
 

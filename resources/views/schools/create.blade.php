@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Estudante</div>
+                    <div class="panel-heading">Escola: </div>
 
                     <div class="panel-body">
                         <form class="form-horizontal" method="POST" action="">
@@ -23,18 +23,14 @@
                                     @endif
                                 </div>
 
-                                <label for="schools" class="col-md-4 control-label">Escola: </label>
+                                <label for="schools" class="col-md-4 control-label">Telfone: </label>
                                 <div class="col-md-6">
-                                    <select name="school" class="form-control">
-                                        @foreach($schools as $school)
-                                            <option value={{$school->id}}> {{$school->name}} </option>
-                                            @endforeach
-                                    </select>
+                                    <input id="phone" type="text" class="form-control" name="nome" required autofocus>
                                 </div>
                                 <p>
                             </div>
-                            <label> Endereço: </label>
 
+                            <label> Endereço: </label>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Logradouro: </label>
@@ -52,8 +48,8 @@
                                     <label for="inputState">Estado: </label>
                                     <select name="state" id="inputState" class="form-control">
                                         @foreach($states as $state)
-                                        <option value={{$state->id}}>{{$state->name}}</option>
-                                            @endforeach
+                                            <option value={{$state->id}}>{{$state->name}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>

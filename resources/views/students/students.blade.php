@@ -20,6 +20,8 @@
                                 <th scope="col">Telefone</th>
                                 <th scope="col">Escola</th>
                                 <th scope="col">Endereço</th>
+                                <th scope="col">Editar</th>
+                                <th scope="col">Deletar</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -31,6 +33,8 @@
                                 <th>{{$student->phone}}</th>
                                 <th>{{$student->school->name}}</th>
                                 <th>{{$student->address->street}}</th>
+                                <th><a href="students/edit/{{$student->id}}" type="button"  class="btn btn-primary btn-xs" data-title="Edit" ><span class="glyphicon glyphicon-pencil"></span></a></th>
+                                <th><a  href="students/delete/{{$student->id}}"  type="button"class="btn btn-danger btn-xs" data-title="Delete" ><span class="glyphicon glyphicon-trash"></span></a></th>
                             </tr>
                             @endforeach
                             </tbody>

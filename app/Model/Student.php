@@ -38,7 +38,6 @@ class Student extends Model
         $this->school = $school;
     }
 
-
     public function school()
     {
         return $this->belongsTo(School::class);
@@ -49,10 +48,12 @@ class Student extends Model
         return $this->belongsTo(Address::class);
     }
 
-    public function insert($data)
+    public function insert($student)
     {
         $this->setName( $student['name'] ?? '');
         $this->setPhone($student['phone'] ?? '');
-        $this->save();
+        $this->school_id = ($student['school_id'] ?? 1);
+        $this->address_id = ($student['address_id'] ?? 1);
+        return ($this->save($student));
     }
 }

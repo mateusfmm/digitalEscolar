@@ -12,14 +12,13 @@ class SchoolController extends Controller
     public function create(Request $request)
     {
         if($request->isMethod('get')) {
-            $data['schools'] = School::all();
             $data['states'] = State::all();
-           // return view('students_create',$data);
+            return view('schools.create',$data);
         }
     }
     public function getAllSchools()
     {
         $data['schools'] = School::all();
-        return view('schools',$data);
+        return view('schools.list',$data);
     }
 }

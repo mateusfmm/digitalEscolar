@@ -20,42 +20,62 @@ class StudentController extends Controller
 
     public function create(Request $request)
     {
+        $data['schools'] = School::all();
+        $data['states'] = State::all();
+        $data['districts'] = District::all();
 
         if($request->isMethod('get')) {
-            $data['schools'] = School::all();
-            $data['states'] = State::all();
-            $data['districts'] = District::all();
-            return view('students_create',$data);
+            return view('students.create',$data);
         }
-
-        $schoolId = $request->post('school');
 
         $address = new Address();
         $address->setAttributes($request);
-        $this->model->address()->save($address);
-
-        $school = School::find($schoolId);
-        $this->model->school()->save($school);
+        $address->save();
+        $adressId = $address->id;
 
         $students = [
-            'name' => $request->post('name'),
-            'phone' =>  $request->post('phone')
+            'name' =>  $request->post('name'),
+            'phone' =>  $request->post('phone'),
+            'school_id' => $request->post('school_id'),
+            'address_id' => $adressId,
         ];
 
-        $this->model->insert($students);
+        if($this->model->insert($students)){
+            $data['success'] = true;
+            return view('students.create',$data);
+        }
 
+    }
 
+    public function edit(Request $request,$id)
+    {
+        $student = Student::Find($id);
+        $data['schools'] = School::all();
+        $data['states'] = State::all();
+        $data['student'] = $student;
 
-        dd($request);
+        if ($request->isMethod('get')){
+            return view('students.edit',$data);
+        }
+
+        if(!empty($request->post('name'))) {
+            $student->setName($request->post('name'));
+        }
+
+        if(!empty($request->post('phone'))){
+            $student->setPhone($request->post('phone'));
+        }
+
+        if ($student->save()){
+            $data['success'] = true;
+            return view('students.edit',$data);
+        }
     }
 
     public function getAllStudents()
     {
         $data['students'] = Student::all();
-        return view('students',$data);
+        return view('students.students',$data);
     }
-
-
-
 
 }

@@ -20,6 +20,8 @@
                                 <th scope="col">Conteudo</th>
                                 <th scope="col">Remetente: </th>
                                 <th scope="col">Destinatário</th>
+                                <th scope="col">Editar</th>
+                                <th scope="col">Deletar</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -31,6 +33,8 @@
                                     <th>{{$notification->text}}</th>
                                     <th>{{$notification->mailer_user->name}}</th>
                                     <th>{{$notification->receiver_user->name}}</th>
+                                    <th><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></th>
+                                    <th><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></th>
                                 </tr>
                             @endforeach
                             </tbody>
