@@ -34,9 +34,9 @@ Route::prefix('schools')->group(function () {
     Route::get('/', 'SchoolController@getAllSchools');
     Route::get('/create', 'SchoolController@create');
     Route::post('/create', 'SchoolController@create');
-    Route::get('/edit/{id}', ['as'=> 'schools.edit', 'uses' => 'SchoolsController@edit']);
-    Route::post('/edit/{id}', 'SchoolsController@edit');
-    Route::get('/delete/{id}', ['as'=> 'schools.delete', 'uses' => 'SchoolsController@delete']);
+    Route::get('/edit/{id}', ['as'=> 'schools.edit', 'uses' => 'SchoolController@edit']);
+    Route::post('/edit/{id}', 'SchoolController@edit');
+    Route::get('/delete/{id}', ['as'=> 'schools.delete', 'uses' => 'SchoolController@delete']);
 });
 
 //Notifications
@@ -45,7 +45,5 @@ Route::prefix('notifications')->group(function () {
     Route::get('/', 'NotificationController@getAllNotifications');
     Route::get('/create', 'NotificationController@create');
     Route::post('/create', 'NotificationController@create');
-    Route::get('/edit/{id}', ['as'=> 'notifications.edit', 'uses' => 'NotificationController@edit']);
-    Route::post('/edit/{id}', 'NotificationController@edit');
     Route::get('/delete/{id}', ['as'=> 'notifications.delete', 'uses' => 'NotificationController@delete']);
 });

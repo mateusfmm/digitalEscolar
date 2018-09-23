@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Model\User;
 use Illuminate\Http\Request;
 use App\Model\Notification;
+use Mockery\Matcher\Not;
 
 class NotificationController extends Controller
 {
@@ -21,21 +22,39 @@ class NotificationController extends Controller
     {
         $data['users'] = $this->users;
 
-        if($request->isMethod('get')) {
+        if ($request->isMethod('get')) {
+            return view('notifications.create', $data);
+        }
+
+        $notification = [
+            'name' => $request->post('name'),
+            'content' => $request->post('content')
+        ];
+
+        $receiverUsersId = $request->post('users');
+        foreach ($receiverUsersId as $userId) {
+            $this->model->buildNotifications($notification, $userId);
+        }
+
+        if (Notification::insert($this->model->notifications)) {
+            $data['success'] = true;
             return view('notifications.create',$data);
         }
 
-        $recipentUsersId = $request->post('users');
-
-        foreach ($recipentUsersId as $userId) {
-            
-        }
-
-
     }
+
     public function getAllNotifications()
     {
         $data['notifications'] = Notification::all();
-        return view('notifications.notifications',$data);
+        return view('notifications.list', $data);
+    }
+
+    public function delete($id)
+    {
+        $notification = Notification::Find($id);
+        $notification->delete();
+        $data['notifications'] = Notification::all();
+        $data['success'] = true;
+        return view('notifications.list', $data);
     }
 }

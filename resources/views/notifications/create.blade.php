@@ -5,8 +5,12 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-2">
                 <div class="panel panel-default">
+                    @if(isset($success))
+                        <div class="alert alert-success" role="alert">
+                            Notificação enviada com sucesso!
+                        </div>
+                    @endif
                     <div class="panel-heading">Notificação</div>
-
                     <div class="panel-body">
                         <form class="form-horizontal" method="POST" action="">
                             {{ csrf_field() }}
@@ -38,7 +42,7 @@
                             <div class="form-group">
                                 <div class="col-md-8 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary">
-                                        Cadastrar
+                                        Enviar
                                     </button>
                                 </div>
                             </div>

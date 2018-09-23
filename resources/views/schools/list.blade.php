@@ -5,6 +5,13 @@
         <div class="row">
             <div class="col-md-12 col-md">
                 <div class="panel panel-default">
+
+                    @if(isset($success))
+                        <div class="alert alert-success" role="alert">
+                            Escola excluida com sucesso!
+                        </div>
+                    @endif
+
                     <div class="panel-heading">Escolas
                         <a href="/schools/create"  type="button" class="btn btn-sm btn-success pull-right">
                             + Escolas
@@ -37,8 +44,9 @@
                                     <th>{{$school->morning_time_out}}</th>
                                     <th>{{$school->afternoon_time_in}}</th>
                                     <th>{{$school->afternoon_time_out}}</th>
-                                    <th><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></th>
-                                    <th><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></th>
+                                    <th><a href="{{route('schools.edit',$school->id)}}" type="button"  class="btn btn-primary btn-xs" data-title="Edit" ><span class="glyphicon glyphicon-pencil"></span></a></th>
+                                    <th><a  href="{{route('schools.delete',$school->id)}}"  type="button"class="btn btn-danger btn-xs" data-title="Delete" ><span class="glyphicon glyphicon-trash"></span></a></th>
+
                                 </tr>
                             @endforeach
                             </tbody>
