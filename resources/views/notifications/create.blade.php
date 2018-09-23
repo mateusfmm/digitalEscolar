@@ -12,21 +12,14 @@
                             {{ csrf_field() }}
 
                             <div class="form-group text-left">
-                                <label for="nome" class="col-md-4 control-label text-left">Nome: </label>
+                                <label class="col-md-4 control-label text-left">Nome: </label>
                                 <div class="col-md-6">
-                                    <input id="nome" type="text" class="form-control" name="nome" required autofocus>
-
-                                    @if ($errors->has('nome'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('nome') }}</strong>
-                                    </span>
-                                    @endif
+                                    <input name="name" type="text" class="form-control" required autofocus>
                                 </div>
 
-                                <label for="schools" class="col-md-4 control-label">Conteudo: </label>
+                                <label class="col-md-4 control-label">Conteudo: </label>
                                 <div class="col-md-6">
-                                    <input id="nome" type="textarea" class="form-control" name="nome" required autofocus>
-
+                                    <input name="content" type="textarea" class="form-control"  required autofocus>
                                 </div>
                                 <p>
                             </div>
@@ -36,10 +29,10 @@
 
                             <div class="col-md-6">
                                 @foreach($users as $user)
-                                    <input id="nome" type="checkbox" class="form-control" name="{{$user->value}}" required autofocus>
-                                    <label for="horns">{{$user->name}}</label>
+                                    {{ Form::checkbox('users[]', $user->id) }}
+                                    {{ Form::label('nome', $user->name) }}
                                 @endforeach
-                            </div>
+                            </div>a
 
 
                             <div class="form-group">

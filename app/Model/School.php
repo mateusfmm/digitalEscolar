@@ -29,6 +29,25 @@ class School extends Model
         return $this->phone;
     }
 
+    public function setMorningTimeIn($time)
+    {
+        $this->morning_time_in = $time;
+    }
+
+    public function setMorningTimeOut($time)
+    {
+        $this->morning_time_out = $time;
+    }
+
+    public function setAfternoonTimeIn($time)
+    {
+        $this->afternoon_time_in = $time;
+    }
+
+    public function setAfternoonTimeOut($time)
+    {
+        $this->afternoon_time_out = $time;
+    }
 
     public function address()
     {
@@ -40,8 +59,16 @@ class School extends Model
         $this->hasMany(Student::class);
     }
 
-    public function setAttributes(Request $request)
+    public function insert($school)
     {
+        $this->setName( $school['name'] ?? '');
+        $this->setPhone($school['phone'] ?? '');
+        $this->setMorningTimeIn($school['morning_time_in'] ?? '');
+        $this->setMorningTimeOut($school['morning_time_out'] ?? '');
+        $this->setAfternoonTimeIn($school['afternoon_time_in'] ?? '');
+        $this->setAfternoonTimeOut($school['afternoon_time_out'] ?? '');
+        $this->address_id = ($school['address_id'] ?? 1);
+        return ($this->save($school));
     }
 
 

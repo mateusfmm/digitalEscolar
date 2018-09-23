@@ -12,16 +12,21 @@ use App\Model\Student;
 class StudentController extends Controller
 {
     private $model;
+    private $states;
+    private $schools;
 
     public function __construct()
     {
         $this->model = new Student();
+        $this->states = State::all();
+        $this->schools = School::all();
+
     }
 
     public function create(Request $request)
     {
-        $data['schools'] = School::all();
-        $data['states'] = State::all();
+        $data['schools'] = $this->schools;
+        $data['states'] = $this->states;
         $data['districts'] = District::all();
 
         if($request->isMethod('get')) {
@@ -70,6 +75,15 @@ class StudentController extends Controller
             $data['success'] = true;
             return view('students.edit',$data);
         }
+    }
+
+    public function delete($id)
+    {
+        $student = Student::Find($id);
+        $student->delete();
+        $data['students'] = Student::all();
+        $data['success'] = true;
+        return view('students.students', $data);
     }
 
     public function getAllStudents()

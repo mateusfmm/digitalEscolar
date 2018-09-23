@@ -5,9 +5,14 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Estudantes
+                    @if(isset($success))
+                        <div class="alert alert-success" role="alert">
+                            Aluno excluido com sucesso!
+                        </div>
+                    @endif
+                    <div class="panel-heading">Alunos
                             <a href="/students/create"  type="button" class="btn btn-sm btn-success pull-right">
-                                + Estudante
+                                + Aluno
                             </a>
                     </div>
 
@@ -33,8 +38,8 @@
                                 <th>{{$student->phone}}</th>
                                 <th>{{$student->school->name}}</th>
                                 <th>{{$student->address->street}}</th>
-                                <th><a href="students/edit/{{$student->id}}" type="button"  class="btn btn-primary btn-xs" data-title="Edit" ><span class="glyphicon glyphicon-pencil"></span></a></th>
-                                <th><a  href="students/delete/{{$student->id}}"  type="button"class="btn btn-danger btn-xs" data-title="Delete" ><span class="glyphicon glyphicon-trash"></span></a></th>
+                                <th><a href="{{route('students.edit',$student->id)}}" type="button"  class="btn btn-primary btn-xs" data-title="Edit" ><span class="glyphicon glyphicon-pencil"></span></a></th>
+                                <th><a  href="{{route('students.delete',$student->id)}}"  type="button"class="btn btn-danger btn-xs" data-title="Delete" ><span class="glyphicon glyphicon-trash"></span></a></th>
                             </tr>
                             @endforeach
                             </tbody>

@@ -8,31 +8,30 @@ use App\Model\Notification;
 
 class NotificationController extends Controller
 {
+    private $model;
+    private $users;
+
+    public function __construct()
+    {
+        $this->model = new Notification();
+        $this->users = User::all();
+    }
 
     public function create(Request $request)
     {
+        $data['users'] = $this->users;
 
         if($request->isMethod('get')) {
-            $data['users'] = User::all();
             return view('notifications.create',$data);
         }
 
-        $schoolId = $request->post('school');
+        $recipentUsersId = $request->post('users');
 
-        $address = new Address();
-        $address->setAttributes($request);
-        $this->model->address()->save($address);
+        foreach ($recipentUsersId as $userId) {
+            
+        }
 
-        $school = School::find($schoolId);
-        $this->model->school()->save($school);
 
-        $students = [
-            'name' => $request->post('name'),
-            'phone' =>  $request->post('phone')
-        ];
-
-        $this->model->insert($students);
-        dd($request);
     }
     public function getAllNotifications()
     {
