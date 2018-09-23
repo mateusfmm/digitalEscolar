@@ -5,36 +5,55 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Estudante</div>
+
+                    @if(isset($success))
+                        <div class="alert alert-success" role="alert">
+                            Escola cadastrada com sucesso!
+                        </div>
+                    @endif
+                    <div class="panel-heading">Escola: </div>
 
                     <div class="panel-body">
                         <form class="form-horizontal" method="POST" action="">
                             {{ csrf_field() }}
 
                             <div class="form-group text-left">
+
                                 <label for="nome" class="col-md-4 control-label text-left">Nome: </label>
                                 <div class="col-md-6">
-                                    <input id="nome" type="text" class="form-control" name="nome" required autofocus>
-
-                                    @if ($errors->has('nome'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('nome') }}</strong>
-                                    </span>
-                                    @endif
+                                    <input name="name"  type="text" class="form-control" required autofocus>
                                 </div>
 
-                                <label for="schools" class="col-md-4 control-label">Escola: </label>
+                                <label for="schools" class="col-md-4 control-label">Telfone: </label>
                                 <div class="col-md-6">
-                                    <select name="school" class="form-control">
-                                        @foreach($schools as $school)
-                                            <option value={{$school->id}}> {{$school->name}} </option>
-                                            @endforeach
-                                    </select>
+                                    <input name="phone" type="text" class="form-control"  required autofocus>
                                 </div>
+
+                                <label for="schools" class="col-md-4 control-label">Horário entrada(manhã): </label>
+                                <div class="col-md-6">
+                                    <input name="morning_time_in" type="time" class="form-control"required autofocus>
+                                </div>
+
+                                <label for="schools" class="col-md-4 control-label">Horário saída(manhã): </label>
+                                <div class="col-md-6">
+                                    <input name="morning_time_out" type="time" class="form-control"required autofocus>
+                                </div>
+
+                                <label for="schools" class="col-md-4 control-label">Horário entrada(tarde): </label>
+                                <div class="col-md-6">
+                                    <input name="afternoon_time_in" type="time" class="form-control"required autofocus>
+                                </div>
+
+                                <label for="schools" class="col-md-4 control-label">Horário saída(tarde): </label>
+                                <div class="col-md-6">
+                                    <input name="afternoon_time_out" type="time" class="form-control"required autofocus>
+                                </div>
+
+
                                 <p>
                             </div>
-                            <label> Endereço: </label>
 
+                            <label> Endereço: </label>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Logradouro: </label>
@@ -52,8 +71,8 @@
                                     <label for="inputState">Estado: </label>
                                     <select name="state" id="inputState" class="form-control">
                                         @foreach($states as $state)
-                                        <option value={{$state->id}}>{{$state->name}}</option>
-                                            @endforeach
+                                            <option value={{$state->id}}>{{$state->name}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>

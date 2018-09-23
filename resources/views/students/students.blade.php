@@ -9,13 +9,23 @@
     <div class="col-md-7 align-self-center">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"></li>
-            <li class="breadcrumb-item active">Segmento</li>
+            <li class="breadcrumb-item active">Estudantes</li>
         </ol>
     </div>
 </div>
 <div class="container-fluid">
     <div class="col-12">
         <div class="card">
+                    @if(isset($success))
+                        <div class="alert alert-success" role="alert">
+                            Aluno excluido com sucesso!
+                        </div>
+                    @endif
+                    <div class="panel-heading">Alunos
+                            <a href="/students/create"  type="button" class="btn btn-sm btn-success pull-right">
+                                + Aluno
+                            </a>
+                    </div>
 
             <div id="myTable_wrapper" class="dataTables_wrapper no-footer">
                 <div class="block" style="text-align:right">
@@ -46,7 +56,8 @@
                                 <th>{{$student->phone}}</th>
                                 <th>{{$student->school->name}}</th>
                                 <th>{{$student->address->street}}</th>
-                                <th></th>
+                                <th><a href="{{route('students.edit',$student->id)}}" type="button"  class="btn btn-primary btn-xs" data-title="Edit" ><span class="glyphicon glyphicon-pencil"></span></a>
+                                <a  href="{{route('students.delete',$student->id)}}"  type="button"class="btn btn-danger btn-xs" data-title="Delete" ><span class="glyphicon glyphicon-trash"></span></a></th>
                             </tr>
                         @endforeach
                     </tbody>

@@ -25,7 +25,7 @@
 								<li class="purple dropdown-modal">
 							<a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false">
 								<i class="ace-icon fa fa-bell"></i>
-								<span class="badge badge-important">8</span>
+								<span class="badge badge-important">Notificações</span>
 							</a>
 
 							<ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">

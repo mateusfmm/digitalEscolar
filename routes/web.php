@@ -16,29 +16,36 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
-
 Route::get('user/{id}', 'UserContrllero@show');
 
+//Students
+Route::prefix('students')->group(function () {
+    Route::get('/', 'StudentController@getAllStudents');
+    Route::get('/create', 'StudentController@create');
+    Route::post('/create', 'StudentController@create');
+    Route::get('/edit/{id}', ['as'=> 'students.edit', 'uses' => 'StudentController@edit']);
+    Route::post('/edit/{id}', 'StudentController@edit');
+    Route::get('/delete/{id}', ['as'=> 'students.delete', 'uses' => 'StudentController@delete']);
+});
 
-Route::get('students', 'StudentController@getAllStudents');
-Route::get('students/create', 'StudentController@create');
-Route::post('students/create', 'StudentController@create');
-Route::put('students/{id}', 'StudentController@edit');
-Route::delete('students/{id}', 'StudentController@delete');
+//Schools
+Route::prefix('schools')->group(function () {
+    Route::get('/', 'SchoolController@getAllSchools');
+    Route::get('/create', 'SchoolController@create');
+    Route::post('/create', 'SchoolController@create');
+    Route::get('/edit/{id}', ['as'=> 'schools.edit', 'uses' => 'SchoolsController@edit']);
+    Route::post('/edit/{id}', 'SchoolsController@edit');
+    Route::get('/delete/{id}', ['as'=> 'schools.delete', 'uses' => 'SchoolsController@delete']);
+});
 
-Route::get('notifications', 'NotificationController@getAllNotifications');
-
-
-
-
-Route::get('notifications/create', 'NotificationController@create');
-Route::post('notifications/create', 'NotificationController@create');
-Route::put('notifications/{id}', 'NotificationController@edit');
-Route::delete('students/{id}', 'NotificationController@delete');
-
-
-Route::get('schools', 'SchoolController@getAllSchools');
-Route::get('schools/create', 'SchoolController@create');
-Route::post('schools/create', 'SchoolController@create');
+//Notifications
+//Schools
+Route::prefix('notifications')->group(function () {
+    Route::get('/', 'NotificationController@getAllNotifications');
+    Route::get('/create', 'NotificationController@create');
+    Route::post('/create', 'NotificationController@create');
+    Route::get('/edit/{id}', ['as'=> 'notifications.edit', 'uses' => 'NotificationController@edit']);
+    Route::post('/edit/{id}', 'NotificationController@edit');
+    Route::get('/delete/{id}', ['as'=> 'notifications.delete', 'uses' => 'NotificationController@delete']);
+});
