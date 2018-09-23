@@ -20,32 +20,32 @@
                             <div class="form-group text-left">
                                 <div class="col-md-6">
                                     {{Form::label('label-name', 'Nome')}}
-                                    {{Form::text('name',null, array('class' => "form-control" ))}}
+                                    {{Form::text('name',$school->name, array('class' => "form-control" ))}}
                                 </div>
 
                                 <div class="col-md-6">
                                     {{Form::label('label-phone', 'Telefone')}}
-                                    {{Form::text('phone',null, array('class' => "form-control" ))}}
+                                    {{Form::text('phone',$school->phone, array('class' => "form-control" ))}}
                                 </div>
 
                                 <div class="col-md-6">
                                     {{Form::label('label-phone', 'Horário entrada(manhã)')}}
-                                    {{Form::time('morning_time_in',null, array('class' => "form-control" ))}}
+                                    {{Form::time('morning_time_in',$school->morning_time_in, array('class' => "form-control" ))}}
                                 </div>
 
                                 <div class="col-md-6">
                                     {{Form::label('label-phone', 'Horário saída(manhã)')}}
-                                    {{Form::time('morning_time_out',null, array('class' => "form-control" ))}}
+                                    {{Form::time('morning_time_out',$school->morning_time_out, array('class' => "form-control" ))}}
                                 </div>
 
                                 <div class="col-md-6">
                                     {{Form::label('label-phone', 'Horário entrada(tarde)')}}
-                                    {{Form::time('afternoon_time_in',null, array('class' => "form-control" ))}}
+                                    {{Form::time('afternoon_time_in',$school->afternoon_time_in, array('class' => "form-control" ))}}
                                 </div>
 
                                 <div class="col-md-6">
                                     {{Form::label('label-phone', 'Horário saída(tarde)')}}
-                                    {{Form::time('afternoon_time_out',null, array('class' => "form-control" ))}}
+                                    {{Form::time('afternoon_time_out', $school->afternoon_time_out, array('class' => "form-control" ))}}
                                 </div>
 
                                 <p>
@@ -56,29 +56,32 @@
 
                                 <div class=" col-md-4">
                                     {{Form::label('label-name', 'Logradouro:')}}
-                                    {{Form::text('street',null, array('class' => "form-control" ))}}
+                                    {{Form::text('street',$school->address->street, array('class' => "form-control" ))}}
                                 </div>
 
                                 <div class="col-md-2">
                                     {{Form::label('label-name', 'Número:')}}
-                                    {{Form::number('number',null, array('class' => "form-control" ))}}
+                                    {{Form::number('number',$school->address->street, array('class' => "form-control" ))}}
                                 </div>
 
                                 <div class="col-md-4">
                                     {{Form::label('label-name', 'Complemento:')}}
-                                    {{Form::text('complement',null, array('class' => "form-control" ))}}
+                                    {{Form::text('complement',$school->address->complement, array('class' => "form-control" ))}}
                                 </div>
+
 
                                 <div class="col-md-4">
                                     {{Form::label('label-name', 'Estado:')}}
-                                    {{Form::select('state',$states,null,array('class' => "form-control" ))}}
+                                    {{Form::select('state',$states,$school->address->state_id,array('class' => "form-control" ))}}
                                 </div>
 
                             </div>
 
+
+
                             <div class="form-group">
                                 <div class="col-md-8 col-md-offset-4">
-                                    {{ Form::submit('Cadastrar' ,array('class' => "btn btn-primary"))}}
+                                    {{ Form::submit('Editar',array('class' => "btn btn-primary"))}}
                                 </div>
                             </div>
                         </form>
