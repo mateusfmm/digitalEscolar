@@ -21,7 +21,7 @@ Route::get('user/{id}', 'UserContrllero@show');
 
 //Students
 Route::prefix('students')->group(function () {
-    Route::get('/', 'StudentController@getAllStudents');
+    Route::get('/', ['as'=> 'students.list', 'uses' => 'StudentController@list']);
     Route::get('/create', 'StudentController@create');
     Route::post('/create', 'StudentController@create');
     Route::get('/edit/{id}', ['as'=> 'students.edit', 'uses' => 'StudentController@edit']);
