@@ -3,12 +3,12 @@
 @section('content')
 <div class="row page-titles">
     <div class="col-md-5 align-self-center">
-        <h3 class="text-primary">Escolas</h3>
+        <h3 class="text-primary">Notificações</h3>
     </div>
     <div class="col-md-7 align-self-center">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"></li>
-            <li class="breadcrumb-item active">Escolas</li>
+            <li class="breadcrumb-item active">Notificações</li>
         </ol>
     </div>
 </div>
@@ -21,10 +21,10 @@
                             + Notificação
                         </a>
                     </div>
-</div>
-<div id="myTable_wrapper" class="dataTables_wrapper no-footer">
-                <table id="myTable" class="table table-striped table-bordered table-hover">
-                    <thead>
+            </div>
+                <div id="myTable_wrapper" class="dataTables_wrapper no-footer">
+                    <table id="myTable" class="table table-striped table-bordered table-hover">
+                        <thead>
                             <tr>
                                 <th class="hide" scope="col">#</th>
                                 <th scope="col">Nome</th>
@@ -50,7 +50,6 @@
 
                     </div>
                 </div>
-            </div>
         </div>
     </div>
     <script type="text/javascript">
@@ -71,4 +70,5 @@
             "pageLength": 10,
         });
     });
+    </script>
 @endsection
