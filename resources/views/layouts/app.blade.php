@@ -23,9 +23,19 @@
 		<script type="text/javascript">
 			try{ace.settings.loadState('main-container')}catch(e){}
 		</script>
+		<div id="sidebar" class="sidebar responsive ace-save-state">
+			<script type="text/javascript">
+				try{ace.settings.loadState('sidebar')}catch(e){}
+			</script>
 
         @include('layouts.navigation')
+                </div>
+                <div class="main-content">
+            <div class="main-content-inner">
+
         @yield('content')
+                </div>
+                </div>
     </div>
     <div class="footer">
 				<div class="footer-inner">
