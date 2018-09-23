@@ -12,7 +12,7 @@
                             Aluno cadastrado com sucesso!
                         </div>
                     @endif
-                    <div class="panel-heading">Estudante</div>
+                    <div class="panel-heading">Aluno</div>
 
                     <div class="panel-body">
                         <form class="form-horizontal" method="POST" action="">
@@ -77,10 +77,13 @@
                             </div>
 
                             <div class="form-group">
-                                <div class="col-md-8 col-md-offset-4">
+                                <div style="text-align:center" class="col-md-12">
                                     <button type="submit" class="btn btn-primary">
                                         Cadastrar
                                     </button>
+                                    <a href="/students" class="btn btn-danger">
+                                        Cancelar
+</a>
                                 </div>
                             </div>
                         </form>

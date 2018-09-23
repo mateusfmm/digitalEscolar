@@ -4,18 +4,19 @@
 
 <div class="row page-titles">
     <div class="col-md-5 align-self-center">
-        <h3 class="text-primary">Estudantes</h3>
+        <h3 class="text-primary">Alunos</h3>
     </div>
     <div class="col-md-7 align-self-center">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"></li>
-            <li class="breadcrumb-item active">Estudantes</li>
+            <li class="breadcrumb-item active">Alunos</li>
         </ol>
     </div>
 </div>
 <div class="container-fluid">
     <div class="col-12">
         <div class="card">
+            <div class="row">
                     @if(isset($success))
                         <div class="alert alert-success" role="alert">
                             Aluno excluido com sucesso!
@@ -26,11 +27,9 @@
                                 + Aluno
                             </a>
                     </div>
+</div>
 
             <div id="myTable_wrapper" class="dataTables_wrapper no-footer">
-                <div class="block" style="text-align:right">
-                    <button class="btn btn-sm btn-success" href="students/create">Novo</button>
-                </div>
                 <table id="myTable" class="table table-striped table-bordered table-hover">
                     <thead>
                         <tr role="row">

@@ -22,24 +22,18 @@
 
         <ul class="submenu">
             <li class="">
-                <a href="#">
+                <a href="/students">
                     <i class="menu-icon fa fa-caret-right"></i>
-                    Operação
+                    Aluno
                 </a>
             </li>
             <li class="">
-                <a href="#">
+                <a href="/schools">
                     <i class="menu-icon fa fa-caret-right"></i>
-                    Segmento
+                    Escola
                 </a>
             </li>
-            <li class="">
-                <a href="#">
-                    <i class="menu-icon fa fa-caret-right"></i>
-                    Usuario
-                </a>
-            </li>
-            @*<li class="">
+            <!-- <li class="">
                     <a href="#" class="dropdown-toggle">
                         <i class="menu-icon fa fa-caret-right"></i>
 
@@ -59,15 +53,15 @@
                             <b class="arrow"></b>
                         </li>
                     </ul>
-                </li>*@
+                </li> -->
         </ul>
     </li>
-
-
-    <li class="">
-        <a href="#">
-            <i class="menu-icon fa fa-envelope"></i>
-            SMS
+    <li>
+        <a href="/notifications">
+            <i class="menu-icon fa fa-comments"></i>
+            <span class="menu-text">
+                Notificações
+            </span>
         </a>
     </li>
 </ul><!-- /.nav-list -->

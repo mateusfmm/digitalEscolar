@@ -76,12 +76,12 @@
                                 </div>
 
                             </div>
-
-
-
                             <div class="form-group">
-                                <div class="col-md-8 col-md-offset-4">
+                                <div style="text-align:center" class="col-md-12">
                                     {{ Form::submit('Editar',array('class' => "btn btn-primary"))}}
+                                    <a href="/schools" class="btn btn-danger">
+                                        Cancelar
+                                    </a>
                                 </div>
                             </div>
                         </form>
