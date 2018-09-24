@@ -2,7 +2,7 @@
 					<a href="/home" class="navbar-brand">
 						<small>
 							<i class="fa fa-bus"></i>
-							TransEscol
+							Digitar Escolar
 						</small>
 					</a>
 				</div>
@@ -11,83 +11,23 @@
 					<ul class="nav ace-nav">
 					<li class="purple dropdown-modal">
 							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-								<i class="ace-icon fa fa-bell icon-animated-bell"></i>
-								<span class="badge badge-important">8</span>
+								<i data-count="0" class="ace-icon fa fa-bell icon-animated-bell"></i>
+									<span class="badge badge-important notif-count"></span>
 							</a>
 
-							<ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
-								<li class="dropdown-header">
-									<i class="ace-icon fa fa-exclamation-triangle"></i>
-									8 Notifications
+							<ul id="notification-list" class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
+								<li class="dropdown-header" data-toggle="dropdown">
+									<i data-count="0" class="ace-icon fa fa-exclamation-triangle">
+										<span class="notif-count"></span>
+									</i>
 								</li>
 
-								<li class="dropdown-content ace-scroll" style="position: relative;">
-								<li class="purple dropdown-modal">
-							<a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false">
-								<i class="ace-icon fa fa-bell"></i>
-								<span class="badge badge-important">Notificações</span>
-							</a>
-
-							<ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
-								<li class="dropdown-header">
-									<i class="ace-icon fa fa-exclamation-triangle"></i>
-									8 Notifications
-								</li>
-
-								<li class="dropdown-content ace-scroll" style="position: relative;"><div class="scroll-track" style="display: none;"><div class="scroll-bar"></div></div><div class="scroll-content" style="">
-									<ul class="dropdown-menu dropdown-navbar navbar-pink">
-										<li>
-											<a href="#">
-												<div class="clearfix">
-													<span class="pull-left">
-														<i class="btn btn-xs no-hover btn-pink fa fa-comment"></i>
-														New Comments
-													</span>
-													<span class="pull-right badge badge-info">+12</span>
-												</div>
-											</a>
-										</li>
-
-										<li>
-											<a href="#">
-												<i class="btn btn-xs btn-primary fa fa-user"></i>
-												Bob just signed up as an editor ...
-											</a>
-										</li>
-
-										<li>
-											<a href="#">
-												<div class="clearfix">
-													<span class="pull-left">
-														<i class="btn btn-xs no-hover btn-success fa fa-shopping-cart"></i>
-														New Orders
-													</span>
-													<span class="pull-right badge badge-success">+8</span>
-												</div>
-											</a>
-										</li>
-
-										<li>
-											<a href="#">
-												<div class="clearfix">
-													<span class="pull-left">
-														<i class="btn btn-xs no-hover btn-info fa fa-twitter"></i>
-														Followers
-													</span>
-													<span class="pull-right badge badge-info">+11</span>
-												</div>
-											</a>
-										</li>
-									</ul>
-								</div></li>
-
-								<li class="dropdown-footer">
-									<a href="#">
-										See all notifications
-										<i class="ace-icon fa fa-arrow-right"></i>
+								<li>
+									<a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false">
+										<i class="ace-icon fa fa-bell"></i>
+										<span class="badge badge-important">TTSTE</span>
 									</a>
 								</li>
-							</ul>
 
 								<li class="dropdown-footer">
 									<a href="#">
@@ -129,3 +69,42 @@
 						</li>
 					</ul>
 				</div>
+
+
+				<script type="text/javascript">
+
+					 var notificationList = $('#notification-list');
+					 var notificationsToggle = notificationList.find('[data-toggle]');
+                    var notificationsCountElem = notificationsToggle.find('i[data-count]');
+                    var notificationsCount = parseInt(notificationsCountElem.data('count'));
+
+               //     if (notificationsCount <= 0) {
+                 //       notificationsWrapper.hide();
+                   // }
+
+                    // Enable pusher logging - don't include this in production
+                    // Pusher.logToConsole = true;
+
+                    var pusher = new Pusher('110834e54625e7fa021c', {
+                        encrypted: true
+                    });
+
+                    // Subscribe to the channel we specified in our Laravel Event
+                    var channel = pusher.subscribe('notification-driver');
+
+                    // Bind a function to a Event (the full Laravel class)
+                    channel.bind('App\\Events\\NotificationEvent', function (data) {
+                        $('#notification-list li:eq(1)').append('<li>' +
+                            '<a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false">\n' +
+                            '<i class="ace-icon fa fa-bell"></i>\n' +
+                            '<span class="badge badge-important">'+ data.message +'</span>\n' +
+                            '</a>\n' +
+                            '</li>');
+
+                        notificationsCount += 1;
+                        notificationsCountElem.attr('data-count', notificationsCount);
+                        $('.notif-count').text(notificationsCount);
+                    });
+
+
+				</script>
