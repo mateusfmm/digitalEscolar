@@ -20,6 +20,7 @@
 <script src="/js/jquery.flot.min.js"></script>
 <script src="/js/jquery.flot.pie.min.js"></script>
 <script src="/js/jquery.flot.resize.min.js"></script>
+<script src="https://js.pusher.com/4.2/pusher.min.js"></script>
 
 <script type="text/javascript">
     if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
