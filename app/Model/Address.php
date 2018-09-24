@@ -42,11 +42,6 @@ class Address extends Model
         return $this->complement;
     }
 
-    public function district()
-    {
-        return $this->hasOne(District::class);
-    }
-
     public function schools()
     {
         $this->belongsTo(School::class);
@@ -63,6 +58,6 @@ class Address extends Model
         $this->setStreet( $request->post('street') ?? '');
         $this->setNumber($request->post('number') ?? '');
         $this->setComplement($request->post('complement') ?? '');
-        $this->district_id = $request->post('district') ?? 1;
+        $this->state_id = $request->post('state') ?? 1;
     }
 }
