@@ -27,7 +27,6 @@ class StudentController extends Controller
     {
         $data['schools'] = $this->schools;
         $data['states'] = $this->states;
-        $data['districts'] = District::all();
 
         if($request->isMethod('get')) {
             return view('students.create',$data);

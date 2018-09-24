@@ -19,6 +19,10 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('user/{id}', 'UserContrllero@show');
 
+Route::get('test', function () {
+    event(new App\Events\StatusLiked('Someone'));
+    return "Event has been sent!";
+});
 //Students
 Route::prefix('students')->group(function () {
     Route::get('/', 'StudentController@getAllStudents');
