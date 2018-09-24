@@ -18,8 +18,8 @@ class AddressCreateTable extends Migration
             $table->string('street');
             $table->string('number');
             $table->string('complement');
-            $table->unsignedInteger('district_id');
-            $table->foreign('district_id')->references('id')->on('districts');
+            $table->unsignedInteger('state_id');
+            $table->foreign('state_id')->references('id')->on('states');
             $table->timestamps();
         });
 

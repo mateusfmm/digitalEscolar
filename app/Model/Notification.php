@@ -2,6 +2,7 @@
 
 namespace App\Model;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 
 class Notification extends Model
@@ -54,7 +55,7 @@ class Notification extends Model
         $this->notifications[] = [
             'name' => $notification['name'],
             'notification_content' => $notification['content'],
-            'mailer_user_id' => 1,
+            'mailer_user_id' => Auth::user()->id,
             'receiver_user_id' => $receiver,
             'flg_read' => 0
         ];

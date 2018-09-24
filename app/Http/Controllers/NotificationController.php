@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Model\User;
 use Illuminate\Http\Request;
 use App\Model\Notification;
+use App\Events\NotificationEvent;
 use Mockery\Matcher\Not;
 
 class NotificationController extends Controller
@@ -33,6 +34,7 @@ class NotificationController extends Controller
 
         $receiverUsersId = $request->post('users');
         foreach ($receiverUsersId as $userId) {
+            event(new NotificationEvent($userId,$notification['content']));
             $this->model->buildNotifications($notification, $userId);
         }
 
