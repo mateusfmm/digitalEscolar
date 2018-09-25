@@ -50,4 +50,5 @@ Route::prefix('notifications')->group(function () {
     Route::get('/create', 'NotificationController@create');
     Route::post('/create', 'NotificationController@create');
     Route::get('/delete/{id}', ['as'=> 'notifications.delete', 'uses' => 'NotificationController@delete']);
+    Route::get('/get/{id}', 'NotificationController@getNotificationById');
 });

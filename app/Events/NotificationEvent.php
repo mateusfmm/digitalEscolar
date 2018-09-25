@@ -26,6 +26,7 @@ class NotificationEvent implements ShouldBroadcast
     public function __construct($userId,$message)
     {
         $this->user = User::find($userId);
+        $this->message['user'] = $userId;
         $this->message = $message;
     }
 

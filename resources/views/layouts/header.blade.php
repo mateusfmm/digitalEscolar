@@ -22,15 +22,8 @@
 									</i>
 								</li>
 
-								<li>
-									<a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false">
-										<i class="ace-icon fa fa-bell"></i>
-										<span class="badge badge-important">TTSTE</span>
-									</a>
-								</li>
-
 								<li class="dropdown-footer">
-									<a href="#">
+									<a href="notifications">
 										See all notifications
 										<i class="ace-icon fa fa-arrow-right"></i>
 									</a>
@@ -94,10 +87,13 @@
 
                     // Bind a function to a Event (the full Laravel class)
                     channel.bind('App\\Events\\NotificationEvent', function (data) {
-                        $('#notification-list li:eq(1)').append('<li>' +
-                            '<a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false">\n' +
+
+                        var userid = data.user.id;
+
+                        $('#notification-list').append('<li>' +
+                            '<a href="notifications/get/'+userid+'" href="#" aria-expanded="false">\n' +
                             '<i class="ace-icon fa fa-bell"></i>\n' +
-                            '<span class="badge badge-important">'+ data.message +'</span>\n' +
+                            '<span class="badge badge-important">'+ data.message.name +'</span>\n' +
                             '</a>\n' +
                             '</li>');
 

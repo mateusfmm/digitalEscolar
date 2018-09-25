@@ -34,8 +34,9 @@ class NotificationController extends Controller
 
         $receiverUsersId = $request->post('users');
         foreach ($receiverUsersId as $userId) {
-            event(new NotificationEvent($userId,$notification['content']));
             $this->model->buildNotifications($notification, $userId);
+            event(new NotificationEvent($userId,$notification));
+
         }
 
         if (Notification::insert($this->model->notifications)) {
@@ -43,6 +44,16 @@ class NotificationController extends Controller
             return view('notifications.create',$data);
         }
 
+    }
+
+    public function getNotificationById($id)
+    {
+        $notification = Notification::find($id);
+
+        $data['name'] = $notification->name;
+        $data['content'] = $notification->notification_content;
+
+        return view('notifications.notification',$data);
     }
 
     public function getAllNotifications()
