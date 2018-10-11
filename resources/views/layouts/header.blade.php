@@ -87,8 +87,10 @@
 
                     // Bind a function to a Event (the full Laravel class)
                     channel.bind('App\\Events\\NotificationEvent', function (data) {
+                        console.log(data);
 
                         var userid = data.user.id;
+
 
                         $('#notification-list').append('<li>' +
                             '<a href="notifications/get/'+userid+'" href="#" aria-expanded="false">\n' +
