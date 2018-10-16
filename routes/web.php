@@ -58,7 +58,7 @@ Route::prefix('payments')->group(function () {
     Route::get('/', 'PaymentController@list');
     Route::get('/create', 'PaymentController@create');
     Route::post('/create', 'PaymentController@create');
-    Route::get('/reports', 'p@reports');
-    Route::post('/reports', 'PaymentController@reports');
+    Route::get('/reports/month', 'PaymentController@reportByPeriod');
+    Route::post('/reports/month', 'PaymentController@reportByPeriod');
     Route::get('/delete/{id}', ['as'=> 'notifications.delete', 'uses' => 'PaymentController@delete']);
 });
