@@ -71,8 +71,7 @@
                     { "bSortable": true },
                     { "bSortable": true },
                     { "bSortable": true },
-                    { "bSortable": true },
-                    { "bSortable": false }
+                    { "bSortable": true }
                 ],
                 "paging": true,
                 "searching": true,
