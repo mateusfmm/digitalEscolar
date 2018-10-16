@@ -34,15 +34,14 @@ class NotificationController extends Controller
 
         $receiverUsersId = $request->post('users');
         foreach ($receiverUsersId as $userId) {
-            $this->model->buildNotifications($notification, $userId);
-            event(new NotificationEvent($userId,$notification));
+            $id = $this->model->buildNotifications($notification, $userId);
+            event(new NotificationEvent($id,$notification));
 
         }
 
-        if (Notification::insert($this->model->notifications)) {
             $data['success'] = true;
             return view('notifications.create',$data);
-        }
+
 
     }
 

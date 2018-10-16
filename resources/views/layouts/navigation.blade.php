@@ -56,6 +56,59 @@
                 </li> -->
         </ul>
     </li>
+
+
+
+    <li>
+        <a href="#" class="dropdown-toggle">
+            <i class="menu-icon fa fa-book"></i>
+            <span class="menu-text">
+                Pagamentos
+            </span>
+
+            <b class="arrow fa fa-angle-down"></b>
+        </a>
+
+        <b class="arrow"></b>
+
+        <ul class="submenu">
+            <li class="">
+                <a href="/payments">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    Todos os pagamentos
+                </a>
+            </li>
+            <li class="">
+                <a href="/payments/reports">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    Relatório Mensal
+                </a>
+            </li>
+            <!-- <li class="">
+                    <a href="#" class="dropdown-toggle">
+                        <i class="menu-icon fa fa-caret-right"></i>
+
+                        Three Level Menu
+                        <b class="arrow fa fa-angle-down"></b>
+                    </a>
+
+                    <b class="arrow"></b>
+
+                    <ul class="submenu">
+                        <li class="">
+                            <a href="#">
+                                <i class="menu-icon fa fa-leaf green"></i>
+                                Item #1
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+                    </ul>
+                </li> -->
+        </ul>
+    </li>
+
+
     <li>
         <a href="/notifications">
             <i class="menu-icon fa fa-comments"></i>

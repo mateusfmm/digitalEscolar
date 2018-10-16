@@ -42,6 +42,10 @@ class Student extends Model
     {
         return $this->belongsTo(School::class);
     }
+    public function payment()
+    {
+        return $this->belongsTo(Payment::class);
+    }
 
     public function address()
     {

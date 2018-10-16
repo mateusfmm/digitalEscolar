@@ -52,12 +52,14 @@ class Notification extends Model
 
     public function buildNotifications($notification, $receiver)
     {
-        $this->notifications[] = [
-            'name' => $notification['name'],
-            'notification_content' => $notification['content'],
-            'mailer_user_id' => Auth::user()->id,
-            'receiver_user_id' => $receiver,
-            'flg_read' => 0
-        ];
+        $not = new Notification();
+        $not->name = $notification['name'];
+        $not->notification_content = $notification['content'];
+        $not->mailer_user_id = Auth::user()->id;
+        $not->receiver_user_id = $receiver;
+        $not->flg_read = 0;
+        $not->save();
+
+        return $not->id;
     }
 }
