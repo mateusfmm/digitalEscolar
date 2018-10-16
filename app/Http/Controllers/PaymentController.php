@@ -44,6 +44,7 @@ class PaymentController extends Controller
         $data['payments'] = Payment::all();
         return view('payments.list', $data);
 
+
     }
 
     public function list()
