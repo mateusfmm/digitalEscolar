@@ -36,15 +36,15 @@ class PaymentController extends Controller
 
         $this->payment->payer_id = $request->post('payer_id');
         $this->payment->value = $request->post('value');
-        $this->payment->expiration_date = $request->post('expiration_date');
+        $this->payment->expiration_date = $request->post('expiration');
         $this->payment->driver_id = Auth::user()->id;
 
         $this->payment->save();
 
         $data['payments'] = Payment::all();
-        if ($request->isMethod('get')) {
-            return view('payments.list', $data);
-        }
+        return view('payments.list', $data);
+
+
     }
 
     public function list()
