@@ -19,7 +19,7 @@
 
                             <div class="col-md-4">
                                 {{Form::label('label-name', 'Aluno:')}}
-                                {{Form::select('id', $students, null, array('class' => "form-control" ))}}
+                                {{Form::select('payer_id', $students, null, array('class' => "form-control" ))}}
                             </div>
 
 

@@ -24,7 +24,7 @@
 
                     <div class="panel-heading">Pagamento
                         <a href="/payments/create"  type="button" class="btn btn-sm btn-success pull-right">
-                            + Escolas
+                            + Pagamento
                         </a>
                     </div>
                 </div>
