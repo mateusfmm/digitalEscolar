@@ -85,7 +85,7 @@ class StudentController extends Controller
         return view('students.students', $data);
     }
 
-    public function getAllStudents()
+    public function list()
     {
         $data['students'] = Student::all();
         return view('students.students',$data);

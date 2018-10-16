@@ -25,7 +25,7 @@ Route::get('test', function () {
 });
 //Students
 Route::prefix('students')->group(function () {
-    Route::get('/', 'StudentController@getAllStudents');
+    Route::get('/', ['as'=> 'students.list', 'uses' => 'StudentController@list']);
     Route::get('/create', 'StudentController@create');
     Route::post('/create', 'StudentController@create');
     Route::get('/edit/{id}', ['as'=> 'students.edit', 'uses' => 'StudentController@edit']);
@@ -51,4 +51,14 @@ Route::prefix('notifications')->group(function () {
     Route::post('/create', 'NotificationController@create');
     Route::get('/delete/{id}', ['as'=> 'notifications.delete', 'uses' => 'NotificationController@delete']);
     Route::get('/get/{id}', 'NotificationController@getNotificationById');
+});
+
+
+Route::prefix('payments')->group(function () {
+    Route::get('/', 'PaymentController@list');
+    Route::get('/create', 'PaymentController@create');
+    Route::post('/create', 'PaymentController@create');
+    Route::get('/reports', 'PaymentController@reports');
+    Route::post('/reports', 'PaymentController@reports');
+    Route::get('/delete/{id}', ['as'=> 'notifications.delete', 'uses' => 'PaymentController@delete']);
 });
