@@ -7,6 +7,8 @@ use App\Model\Student;
 use Illuminate\Http\Request;
 use App\Model\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 
 class PaymentController extends Controller
 {
@@ -24,13 +26,23 @@ class PaymentController extends Controller
 
     public function create(Request $request)
     {
-
         foreach($this->students as $student){
             $data['students'][$student->id] = $student->name;
         }
-
         if ($request->isMethod('get')) {
             return view('payments.create', $data);
+        }
+
+        $this->payment->payer_id = $request->post('payer_id');
+        $this->payment->value = $request->post('value');
+        $this->payment->expiration_date = $request->post('expiration_date');
+        $this->payment->driver_id = Auth::user()->id;
+
+        $this->payment->save();
+
+        $data['payments'] = Payment::all();
+        if ($request->isMethod('get')) {
+            return view('payments.list', $data);
         }
     }
 
